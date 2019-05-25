@@ -78,3 +78,19 @@ export function deletePost(req, res) {
     });
   });
 }
+
+/**
+ * Edit a post
+ * @param req
+ * @param res
+ * @returns void
+ */
+
+export function editPost(req, res) {
+  Post.update({ cuid: req.params.cuid }, req.body.post).exec((err, post) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+    res.json({ post });
+  });
+}
