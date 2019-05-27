@@ -7,6 +7,7 @@ import { FormattedMessage } from 'react-intl';
 import styles from './PostListItem.css';
 
 function PostListItem(props) {
+  console.log('   render PostListItem');
   return (
     <div className={styles['single-post']}>
       <h3 className={styles['post-title']}>
@@ -14,6 +15,11 @@ function PostListItem(props) {
           {props.post.title}
         </Link>
       </h3>
+      <div>
+        <p className={styles['vote-count']}>{props.post.voteCount}</p>
+        <div className={styles['vote-button']}><a href="#" onClick={props.upvotePost}><FormattedMessage id="upvote" /></a></div>
+        <div className={styles['vote-button']}><a href="#" onClick={props.downvotePost}>Downvote</a></div>
+      </div>
       <p className={styles['author-name']}><FormattedMessage id="by" /> {props.post.name}</p>
       <p className={styles['post-desc']}>{props.post.content}</p>
       <p className={styles['post-action']}><a href="#" onClick={props.onDelete}><FormattedMessage id="deletePost" /></a></p>
@@ -29,8 +35,11 @@ PostListItem.propTypes = {
     content: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,
     cuid: PropTypes.string.isRequired,
+    voteCount: PropTypes.number.isRequired,
   }).isRequired,
   onDelete: PropTypes.func.isRequired,
+  upvotePost: PropTypes.func.isRequired,
+  downvotePost: PropTypes.func.isRequired,
 };
 
 export default PostListItem;

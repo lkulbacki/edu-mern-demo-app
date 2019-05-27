@@ -118,3 +118,20 @@ textarea {
   font-size: 16px;
   color: #555;
 }
+
+.vote-count {
+  color: red;
+  display: inline-block;
+}
+
+.vote-button {
+  background-color: #888888;
+  display: inline-block;
+  padding: 3px;
+  margin-left: 5px;
+}
+
+.vote-button:hover {
+  background-color: #03A9F4;
+  cursor: pointer;
+}

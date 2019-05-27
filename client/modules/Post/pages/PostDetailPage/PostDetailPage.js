@@ -23,6 +23,7 @@ export class PostDetailPage extends Component {
       name: this.props.post.name,
       title: this.props.post.title,
       content: this.props.post.content,
+      voteCount: this.props.post.voteCount,
     };
   }
 
@@ -74,7 +75,6 @@ export class PostDetailPage extends Component {
     const { props } = this;
     return (
       <div>
-        <p>Dupa dupa</p>
         <Helmet title={this.props.post.title} />
         <a className={styles['edit-post-button']} href="#" onClick={this.props.toggleEditPost}><FormattedMessage id="editPost" /></a>
         {
@@ -106,6 +106,7 @@ PostDetailPage.propTypes = {
     content: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,
     cuid: PropTypes.string.isRequired,
+    voteCount: PropTypes.number.isRequired,
   }).isRequired,
   intl: PropTypes.shape({
     messages: PropTypes.shape({

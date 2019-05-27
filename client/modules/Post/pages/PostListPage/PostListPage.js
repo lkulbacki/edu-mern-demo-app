@@ -7,7 +7,7 @@ import PostList from '../../components/PostList';
 import PostCreateWidget from '../../components/PostCreateWidget/PostCreateWidget';
 
 // Import Actions
-import { addPostRequest, fetchPosts, deletePostRequest } from '../../PostActions';
+import { addPostRequest, fetchPosts, deletePostRequest, upvotePostRequest, downvotePostRequest } from '../../PostActions';
 import { toggleAddPost } from '../../../App/AppActions';
 
 // Import Selectors
@@ -25,16 +25,25 @@ class PostListPage extends Component {
     }
   };
 
+  handleUpvotePost = post => {
+    this.props.dispatch(upvotePostRequest(post));
+  };
+
+  handleDownvotePost = post => {
+    this.props.dispatch(downvotePostRequest(post));
+  };
+
   handleAddPost = (name, title, content) => {
     this.props.dispatch(toggleAddPost());
     this.props.dispatch(addPostRequest({ name, title, content }));
   };
 
   render() {
+    console.log('   render PostListPage');
     return (
       <div>
         <PostCreateWidget addPost={this.handleAddPost} showAddPost={this.props.showAddPost} />
-        <PostList handleDeletePost={this.handleDeletePost} posts={this.props.posts} />
+        <PostList handleDeletePost={this.handleDeletePost} handleUpvotePost={this.handleUpvotePost} handleDownvotePost={this.handleDownvotePost} posts={this.props.posts} />
       </div>
     );
   }
@@ -56,6 +65,7 @@ PostListPage.propTypes = {
     name: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
+    voteCount: PropTypes.number.isRequired,
   })).isRequired,
   showAddPost: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,

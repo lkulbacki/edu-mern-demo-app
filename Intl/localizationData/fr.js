@@ -18,6 +18,7 @@ export default {
     	  =1 {has # comment}
     	  other {has # comments}
     	} (in real app this would be translated to French)`,
+    upvote: 'Upvotee',
     HTMLComment: `user <b style='font-weight: bold'>{name} </b> {value, plural,
     	  =0 {does not have <i style='font-style: italic'>any</i> comments}
     	  =1 {has <i style='font-style: italic'>#</i> comment}

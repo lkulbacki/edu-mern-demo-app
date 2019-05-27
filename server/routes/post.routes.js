@@ -17,4 +17,10 @@ router.route('/posts/:cuid').delete(PostController.deletePost);
 // Update a post by cuid
 router.route('/posts/:cuid').put(PostController.editPost);
 
+// Upvote a post by cuid
+router.route('/posts/upvote/:cuid').put(PostController.upvotePost);
+
+// Downvote a post by cuid
+router.route('/posts/downvote/:cuid').put(PostController.downvotePost);
+
 export default router;

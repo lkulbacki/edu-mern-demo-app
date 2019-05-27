@@ -94,3 +94,35 @@ export function editPost(req, res) {
     res.json({ post });
   });
 }
+
+export function upvotePost(req, res) {
+  Post.findOne({ cuid: req.params.cuid }).exec((err, post) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+    console.log('   CONTROLLER');
+    post.voteCount += 1;
+    post.save((err, saved) => {
+      if (err) {
+        res.status(500).send(err);
+      }
+      res.json({ post: saved });
+    });
+  });
+}
+
+export function downvotePost(req, res) {
+  Post.findOne({ cuid: req.params.cuid }).exec((err, post) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+    console.log('   CONTROLLER');
+    post.voteCount -= 1;
+    post.save((err, saved) => {
+      if (err) {
+        res.status(500).send(err);
+      }
+      res.json({ post: saved });
+    });
+  });
+}
