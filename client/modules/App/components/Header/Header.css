@@ -39,7 +39,7 @@
 
 .language-switcher ul {
   list-style: none;
-  width: 980px;
+  /*width: 980px;*/
   margin: auto;
   text-align: right;
 }
@@ -65,4 +65,19 @@
     float: left;
     margin-top: 16px;
   }
+}
+
+.navigation {
+  background-color: red;
+}
+
+.navigation li {
+  display: inline-block;
+  margin: 5px;
+}
+
+.interactive-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
 }
